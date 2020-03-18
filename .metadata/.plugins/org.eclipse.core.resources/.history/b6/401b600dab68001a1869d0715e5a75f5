@@ -1,0 +1,5 @@
+package com.rdsq.arivana.business;
+
+public class CurrencyType implements InventoryItems {
+
+}

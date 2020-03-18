@@ -12,7 +12,7 @@ email			varchar(100) 	not null,
 isAdmin			boolean			default false
 );
 
-insert into User (username,password,email,isAdmin) values('aprice', AES_ENCRYPT('hillant2', 'hiddensecret'),'antprice07@gmail.com', true);
+insert into User (username,password,email,isAdmin) values('aprice', AES_ENCRYPT('admin@pw123', 'hiddensecret'),'antprice07@gmail.com', true);
 
 
 -- create a user and grant privileges to that user

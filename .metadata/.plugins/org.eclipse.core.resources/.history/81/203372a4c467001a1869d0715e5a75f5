@@ -1,0 +1,18 @@
+package com.rdsq.arivana.business;
+
+import javax.persistence.Entity;
+
+@Entity
+public class User {
+	
+	private int id;
+	private String username;
+	private String password;
+	private String email;
+	private boolean isAdmin;
+
+	public User() {}
+	
+	
+
+}

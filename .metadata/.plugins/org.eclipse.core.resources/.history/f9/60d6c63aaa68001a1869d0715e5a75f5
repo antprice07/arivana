@@ -1,0 +1,24 @@
+package com.rdsq.arivana.business;
+
+import javax.persistence.*;
+
+@Entity
+public class Armor implements InventoryItems {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	private String name;
+	private int slashProt;
+	private int crushProt;
+	private int pierceProt;
+	private int magicProt;
+	private int dexterBuff;
+	private int monetaryVal;
+	@ManyToOne
+	private MonetaryType monetaryType;
+	
+
+	public Armor() {}
+
+}

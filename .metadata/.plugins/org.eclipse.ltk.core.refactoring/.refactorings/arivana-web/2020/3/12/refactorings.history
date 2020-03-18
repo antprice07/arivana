@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.rdsq.arivana.business.MonetaryType&apos; to &apos;CurrencyType&apos;&#x0D;&#x0A;- Original project: &apos;arivana-web&apos;&#x0D;&#x0A;- Original element: &apos;com.rdsq.arivana.business.MonetaryType&apos;&#x0D;&#x0A;- Renamed element: &apos;com.rdsq.arivana.business.CurrencyType&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MonetaryType&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.rdsq.arivana.business{MonetaryType.java[MonetaryType" matchStrategy="1" name="CurrencyType" qualified="false" references="true" similarDeclarations="false" stamp="1584489224791" textual="false" version="1.0"/>
+</session>
