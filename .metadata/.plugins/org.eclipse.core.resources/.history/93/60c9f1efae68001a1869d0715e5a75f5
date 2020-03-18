@@ -1,0 +1,237 @@
+package com.rdsq.arivana.business;
+
+import javax.persistence.*;
+
+@Entity
+public class Characters {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	private String name;
+	private int xp;
+	private int level;
+	@ManyToOne
+	@JoinColumn(name="raceId")
+	private Race race;
+	@ManyToOne
+	@JoinColumn(name="charClassId")
+	private CharClass charclass;
+	private int intelligence;
+	private int strength;
+	private int perception;
+	private int charisma;
+	private int dexterity;
+	private int wisdom;
+	private int sturdiness;
+	private int natMagic;
+	private int endurance;
+	private int luck;
+	private int hp;
+	private int skillPoints;
+	private int statPoints;
+	private int magicPoints;
+	@ManyToOne
+	@JoinColumn(name="userId")
+	private User user;
+
+	public Characters() {}
+
+	public Characters(int id, String name, int xp, int level, Race race, CharClass charclass, int intelligence,
+			int strength, int perception, int charisma, int dexterity, int wisdom, int sturdiness, int natMagic,
+			int endurance, int luck, int hp, int skillPoints, int statPoints, int magicPoints, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.xp = xp;
+		this.level = level;
+		this.race = race;
+		this.charclass = charclass;
+		this.intelligence = intelligence;
+		this.strength = strength;
+		this.perception = perception;
+		this.charisma = charisma;
+		this.dexterity = dexterity;
+		this.wisdom = wisdom;
+		this.sturdiness = sturdiness;
+		this.natMagic = natMagic;
+		this.endurance = endurance;
+		this.luck = luck;
+		this.hp = hp;
+		this.skillPoints = skillPoints;
+		this.statPoints = statPoints;
+		this.magicPoints = magicPoints;
+		this.user = user;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getXp() {
+		return xp;
+	}
+
+	public void setXp(int xp) {
+		this.xp = xp;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public Race getRace() {
+		return race;
+	}
+
+	public void setRace(Race race) {
+		this.race = race;
+	}
+
+	public CharClass getCharclass() {
+		return charclass;
+	}
+
+	public void setCharclass(CharClass charclass) {
+		this.charclass = charclass;
+	}
+
+	public int getIntelligence() {
+		return intelligence;
+	}
+
+	public void setIntelligence(int intelligence) {
+		this.intelligence = intelligence;
+	}
+
+	public int getStrength() {
+		return strength;
+	}
+
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+
+	public int getPerception() {
+		return perception;
+	}
+
+	public void setPerception(int perception) {
+		this.perception = perception;
+	}
+
+	public int getCharisma() {
+		return charisma;
+	}
+
+	public void setCharisma(int charisma) {
+		this.charisma = charisma;
+	}
+
+	public int getDexterity() {
+		return dexterity;
+	}
+
+	public void setDexterity(int dexterity) {
+		this.dexterity = dexterity;
+	}
+
+	public int getWisdom() {
+		return wisdom;
+	}
+
+	public void setWisdom(int wisdom) {
+		this.wisdom = wisdom;
+	}
+
+	public int getSturdiness() {
+		return sturdiness;
+	}
+
+	public void setSturdiness(int sturdiness) {
+		this.sturdiness = sturdiness;
+	}
+
+	public int getNatMagic() {
+		return natMagic;
+	}
+
+	public void setNatMagic(int natMagic) {
+		this.natMagic = natMagic;
+	}
+
+	public int getEndurance() {
+		return endurance;
+	}
+
+	public void setEndurance(int endurance) {
+		this.endurance = endurance;
+	}
+
+	public int getLuck() {
+		return luck;
+	}
+
+	public void setLuck(int luck) {
+		this.luck = luck;
+	}
+
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	public int getSkillPoints() {
+		return skillPoints;
+	}
+
+	public void setSkillPoints(int skillPoints) {
+		this.skillPoints = skillPoints;
+	}
+
+	public int getStatPoints() {
+		return statPoints;
+	}
+
+	public void setStatPoints(int statPoints) {
+		this.statPoints = statPoints;
+	}
+
+	public int getMagicPoints() {
+		return magicPoints;
+	}
+
+	public void setMagicPoints(int magicPoints) {
+		this.magicPoints = magicPoints;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+
+}

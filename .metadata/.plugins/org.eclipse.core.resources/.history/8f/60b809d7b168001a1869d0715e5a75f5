@@ -1,0 +1,9 @@
+package com.rdsq.arivana.business;
+
+public class MiscItem {
+
+	public MiscItem() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

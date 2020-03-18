@@ -1,0 +1,25 @@
+package com.rdsq.arivana.business;
+
+import javax.persistence.*;
+
+@Entity
+public class Characters {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	private String name;
+	private int xp = 0;
+	private int level = 1;
+	@ManyToOne
+	@JoinColumn(name="raceId")
+	private Race race;
+	@ManyToOne
+	@JoinColumn(name="charClassId")
+	private CharClass charclass;
+	private int intelligence;
+	
+
+	public Characters() {}
+
+}

@@ -1,0 +1,9 @@
+package com.rdsq.arivana.business;
+
+public class CharSkill {
+
+	public CharSkill() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

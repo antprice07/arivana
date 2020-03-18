@@ -1,0 +1,14 @@
+package com.rdsq.arivana.business;
+
+import javax.persistence.*;
+
+@Entity
+public class CharClass {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+
+	public CharClass() {}
+
+}

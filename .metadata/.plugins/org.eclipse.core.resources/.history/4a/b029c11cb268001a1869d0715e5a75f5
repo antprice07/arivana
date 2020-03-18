@@ -1,0 +1,9 @@
+package com.rdsq.arivana.business;
+
+public class CharMiscInventory {
+
+	public CharMiscInventory() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,10 @@
+package com.rdsq.arivana.business;
+
+import javax.persistence.*;
+
+@Entity
+public class Skill {
+
+	public Skill() {}
+
+}
