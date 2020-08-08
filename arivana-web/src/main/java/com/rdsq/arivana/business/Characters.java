@@ -12,6 +12,9 @@ public class Characters {
 	private int xp;
 	private int level;
 	@ManyToOne
+	@JoinColumn(name="userId")
+	private User user;
+	@ManyToOne
 	@JoinColumn(name="raceId")
 	private Race race;
 	@ManyToOne
@@ -36,9 +39,6 @@ public class Characters {
 	private int crushArmor;
 	private int pierceArmor;
 	private int magicArmor;
-	@ManyToOne
-	@JoinColumn(name="userId")
-	private User user;
 
 	public Characters() {}
 

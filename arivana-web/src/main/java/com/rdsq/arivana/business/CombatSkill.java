@@ -10,20 +10,24 @@ public class CombatSkill {
 	private int id;
 	private String name;
 	private int skillPointPerLvl;
+	private int maxLvl;
 	private int lvlReq;
 	private int preReq;
 	private int preReqLvlReq;
+	private String stacksWith;
 
 	public CombatSkill() {}
 
-	public CombatSkill(int id, String name, int skillPointPerLvl, int lvlReq, int preReq, int preReqLvlReq) {
+	public CombatSkill(int id, String name, int skillPointPerLvl, int maxLvl, int lvlReq, int preReq, int preReqLvlReq, String stacksWith) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.skillPointPerLvl = skillPointPerLvl;
+		this.maxLvl = maxLvl;
 		this.lvlReq = lvlReq;
 		this.preReq = preReq;
 		this.preReqLvlReq = preReqLvlReq;
+		this.stacksWith = stacksWith;
 	}
 
 	public int getId() {
@@ -73,6 +77,24 @@ public class CombatSkill {
 	public void setPreReqLvlReq(int preReqLvlReq) {
 		this.preReqLvlReq = preReqLvlReq;
 	}
+
+	public int getMaxLvl() {
+		return maxLvl;
+	}
+
+	public void setMaxLvl(int maxLvl) {
+		this.maxLvl = maxLvl;
+	}
+
+	public String getStacksWith() {
+		return stacksWith;
+	}
+
+	public void setStacksWith(String stacksWith) {
+		this.stacksWith = stacksWith;
+	}
+	
+	
 	
 	
 

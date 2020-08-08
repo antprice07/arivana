@@ -1,9 +1,0 @@
-package com.rdsq.arivana.business;
-
-public class SurvivalItem {
-
-	public SurvivalItem() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

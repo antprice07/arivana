@@ -14,8 +14,8 @@ public class Skill {
 	private int maxLvl;
 	private String preReq;
 	private int preReqLvlReq;
-	private boolean preReqIsStat;
 	private String description;
+	private boolean preReqIsStat;
 	
 	
 

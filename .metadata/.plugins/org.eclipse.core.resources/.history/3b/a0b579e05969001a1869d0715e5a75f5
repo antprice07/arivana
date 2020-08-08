@@ -1,9 +1,0 @@
-package com.rdsq.arivana.business;
-
-public class CharSurvivalInventory {
-
-	public CharSurvivalInventory() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

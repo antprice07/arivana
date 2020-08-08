@@ -1,9 +1,0 @@
-package com.rdsq.arivana.business;
-
-public class CombatSkill {
-
-	public CombatSkill() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

@@ -1,0 +1,9 @@
+package com.rdsq.arivana.business;
+
+public class Potion {
+
+	public Potion() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

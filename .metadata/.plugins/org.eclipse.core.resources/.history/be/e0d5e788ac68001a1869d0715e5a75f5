@@ -1,9 +1,0 @@
-package com.rdsq.arivana.business;
-
-public class CharClass {
-
-	public CharClass() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

@@ -1,9 +1,0 @@
-package com.rdsq.arivana.business;
-
-public class Armor implements InventoryItems {
-
-	public Armor() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

@@ -1,9 +1,0 @@
-package com.rdsq.arivana.business;
-
-public class Weapon {
-
-	public Weapon() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
