@@ -1,0 +1,27 @@
+package com.rdsq.arivana.web;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.db.ArmorRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/armor")
+public class ArmorController {
+
+	@Autowired
+	private ArmorRepository armorRepo;
+	
+	@GetMapping("/")
+	public JsonResponse getAll() {
+		try {
+			return JsonResponse.getInstance(armorRepo.findAll());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+	
+	
+	
+}
