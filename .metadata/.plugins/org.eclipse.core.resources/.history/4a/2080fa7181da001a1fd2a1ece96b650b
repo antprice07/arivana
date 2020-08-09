@@ -1,0 +1,46 @@
+package com.rdsq.arivana.web;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.business.Characters;
+import com.rdsq.arivana.db.CharactersRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/characters")
+public class CharactersController {
+	
+	@Autowired
+	private CharactersRepository charRepo;
+
+	@GetMapping("/")
+	public JsonResponse getAll() {
+		try {
+			return JsonResponse.getInstance(charRepo.findAll());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+	
+	@GetMapping("/{id}")
+	public JsonResponse get(@PathVariable Integer id) {
+		if(id == null) return JsonResponse.getInstance("Invalid entry");
+		try {
+			Optional<Characters> character = charRepo.findById(id);
+			if(!character.isPresent()) return JsonResponse.getInstance("No such character exists");
+			return JsonResponse.getInstance(character.get());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+	
+	
+	
+	
+	
+	
+}

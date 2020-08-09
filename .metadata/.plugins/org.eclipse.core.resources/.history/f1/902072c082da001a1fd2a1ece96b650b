@@ -75,16 +75,7 @@ public class CharactersController {
 	
 	@DeleteMapping("/{id}")
 	public JsonResponse deleteCharacter(@PathVariable Integer id) {
-		if(id==null) return JsonResponse.getInstance("ID field cannot be blank");
-		try {
-			Optional<Characters> c = charRepo.findById(id);
-			if(!c.isPresent()) return JsonResponse.getInstance("No character found!");
-			charRepo.deleteById(id);
-			return JsonResponse.getInstance(c.get().getName() + " was deleted");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
+		
 	}
 	
 	

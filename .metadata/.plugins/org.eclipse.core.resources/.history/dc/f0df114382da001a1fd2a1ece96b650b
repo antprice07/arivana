@@ -38,7 +38,7 @@ public class CharactersController {
 		}
 	}
 	
-	private JsonResponse save(Characters character) {
+	private JsonResponse save (Characters character) {
 		try {
 			Characters c = charRepo.saveAndFlush(character);
 			return JsonResponse.getInstance(c);
@@ -51,87 +51,9 @@ public class CharactersController {
 		}
 	}
 	
-	@PostMapping("/")
-	public JsonResponse addCharacter(@RequestBody Characters character) {
-		try {
-			return save(character);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
 	
-	@PutMapping("/")
-	public JsonResponse update(@RequestBody Characters character) {
-		try {
-			Optional<Characters> c = charRepo.findById(character.getId());
-			if(!c.isPresent()) return JsonResponse.getInstance("No character found for update");
-			return save(character);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
 	
-	@DeleteMapping("/{id}")
-	public JsonResponse deleteCharacter(@PathVariable Integer id) {
-		if(id==null) return JsonResponse.getInstance("ID field cannot be blank");
-		try {
-			Optional<Characters> c = charRepo.findById(id);
-			if(!c.isPresent()) return JsonResponse.getInstance("No character found!");
-			charRepo.deleteById(id);
-			return JsonResponse.getInstance(c.get().getName() + " was deleted");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
+	
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
