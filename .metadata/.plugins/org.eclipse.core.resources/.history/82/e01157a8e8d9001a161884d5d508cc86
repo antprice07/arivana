@@ -1,0 +1,50 @@
+package com.rdsq.arivana.web;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.business.Success;
+import com.rdsq.arivana.db.SuccessRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/success")
+public class SuccessController {
+	
+	@Autowired
+	private SuccessRepository sucRepo;
+	
+	@PostMapping("/")
+	public JsonResponse getSuccessMsg(@RequestBody Success s) {
+		int roll = convertRollRow(s.getRoll());
+		return null;
+	}
+	
+	private int convertRollRow(int roll) {
+		int row = 0;
+		if(roll == 1) return roll;
+		if(roll>=2 && roll <=5) row= 2;
+		if(roll>=2 && roll <=5) row= 3;
+		if(roll>=2 && roll <=5) row= 4;
+		if(roll>=2 && roll <=5) row= 5;
+		if(roll>=2 && roll <=5) row= 6;
+		if(roll>=2 && roll <=5) row= 7;
+		if(roll>=2 && roll <=5) row= 8;
+		if(roll>=2 && roll <=5) row= 9;
+		if(roll>=2 && roll <=5) row= 10;
+		if(roll>=2 && roll <=5) row= 11;
+		if(roll>=2 && roll <=5) row= 12;
+		if(roll>=2 && roll <=5) row= 13;
+		if(roll>=2 && roll <=5) row= 14;
+		if(roll>=2 && roll <=5) row= 15;
+		if(roll>=2 && roll <=5) row= 16;
+		if(roll>=2 && roll <=5) row= 17;
+		if(roll>=2 && roll <=5) row= 18;
+		if(roll>=2 && roll <=5) row= 19;
+		if(roll>=2 && roll <=5) row= 20;
+		if(roll>=2 && roll <=5) row= 21;
+		if(roll>=2 && roll <=5) row= 22;
+		
+		return row;
+	}
+
+}

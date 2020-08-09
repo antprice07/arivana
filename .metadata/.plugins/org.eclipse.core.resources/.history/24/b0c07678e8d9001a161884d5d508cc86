@@ -1,0 +1,29 @@
+package com.rdsq.arivana.web;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.business.Success;
+import com.rdsq.arivana.db.SuccessRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/success")
+public class SuccessController {
+	
+	@Autowired
+	private SuccessRepository sucRepo;
+	
+	@PostMapping("/")
+	public JsonResponse getSuccessMsg(@RequestBody Success s) {
+		int roll = convertRollRow(s.getRoll());
+		return null;
+	}
+	
+	private int convertRollRow(int roll) {
+		int row = 0;
+		if(roll == 1) return roll;
+		if(roll>=2 && roll <=5) row= 2;
+		return row;
+	}
+
+}
