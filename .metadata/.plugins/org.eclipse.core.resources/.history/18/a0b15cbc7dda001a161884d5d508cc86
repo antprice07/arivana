@@ -63,31 +63,7 @@ public class ArmorController {
 		}
 	}
 	
-	@PutMapping("/")
-	public JsonResponse update(@RequestBody Armor armor) {
-		try {
-			Optional<Armor> a = armorRepo.findById(armor.getId());
-			if(!a.isPresent()) return JsonResponse.getInstance("Armor doesn't exist");
-			return save(armor);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
 	
-	@DeleteMapping("/{id}")
-	public JsonResponse deleteArmor(@PathVariable Integer id) {
-		if(id==null)return JsonResponse.getInstance("ID field cannot be blank");
-		try {
-			Optional<Armor> armor = armorRepo.findById(id);
-			if(!armor.isPresent()) return JsonResponse.getInstance("No armor with that id can be found");
-			armorRepo.deleteById(id);
-			return JsonResponse.getInstance(armor.get().getName() + "delete.");
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
 	
 	
 	

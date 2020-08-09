@@ -6,5 +6,4 @@ import com.rdsq.arivana.business.Armor;
 
 public interface ArmorRepository extends JpaRepository<Armor, Integer> {
 
-	Armor findByName(String name);
 }

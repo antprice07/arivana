@@ -85,7 +85,7 @@ public class ArmorController {
 			return JsonResponse.getInstance(armor.get().getName() + "delete.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			return JsonResponse.getInstance(e);
+			JsonResponse.getInstance(e);
 		}
 	}
 	
