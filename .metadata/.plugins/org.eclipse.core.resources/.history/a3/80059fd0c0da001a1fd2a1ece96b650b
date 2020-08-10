@@ -1,0 +1,42 @@
+package com.rdsq.arivana.web;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.business.CharArmorInventory;
+import com.rdsq.arivana.business.Characters;
+import com.rdsq.arivana.db.CharArmorInventoryRepository;
+import com.rdsq.arivana.db.CharactersRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/chararminv")
+public class CharArmInvController {
+
+	@Autowired
+	private CharArmorInventoryRepository cArmInvRepo;
+	@Autowired
+	private CharactersRepository charRepo;
+	
+	@GetMapping("/{charId}")
+	public JsonResponse getByChar(@PathVariable Integer charId) {
+		if(charId==null) return JsonResponse.getInstance("ID must be a valid number");
+		try {
+			Optional<Characters> character = charRepo.findById(charId);
+			if(!character.isPresent()) return JsonResponse.getInstance("No such character exists!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+		try {
+			Iterable<CharArmorInventory> armorInv = cArmInvRepo.findByCharacterId(charId);
+			if(armorInv == null) return JsonResponse.getInstance("Character has no armor in Inventory");
+			return JsonResponse.getInstance(armorInv);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+	
+}

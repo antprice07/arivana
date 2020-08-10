@@ -1,0 +1,22 @@
+package com.rdsq.arivana.web;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.db.CharArmorInventoryRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/chararminv")
+public class CharArmInvController {
+
+	@Autowired
+	private CharArmorInventoryRepository cArmInvRepo;
+	@Autowired
+	private CharactersRepository charRepo;
+	
+	@GetMapping("/{charId}")
+	public JsonResponse getByChar(@PathVariable Integer charId) {
+		
+	}
+	
+}

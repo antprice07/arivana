@@ -1,0 +1,24 @@
+package com.rdsq.arivana.web;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.db.CharArmorInventoryRepository;
+import com.rdsq.arivana.db.CharactersRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/chararminv")
+public class CharArmInvController {
+
+	@Autowired
+	private CharArmorInventoryRepository cArmInvRepo;
+	@Autowired
+	private CharactersRepository charRepo;
+	
+	@GetMapping("/{charId}")
+	public JsonResponse getByChar(@PathVariable Integer charId) {
+		if(charId==null) return JsonResponse.getInstance("ID must be a valid number");
+		
+	}
+	
+}

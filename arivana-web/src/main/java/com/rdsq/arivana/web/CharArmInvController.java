@@ -1,0 +1,128 @@
+package com.rdsq.arivana.web;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.business.CharArmorInventory;
+import com.rdsq.arivana.business.Characters;
+import com.rdsq.arivana.db.CharArmorInventoryRepository;
+import com.rdsq.arivana.db.CharactersRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/chararminv")
+public class CharArmInvController {
+
+	@Autowired
+	private CharArmorInventoryRepository cArmInvRepo;
+	@Autowired
+	private CharactersRepository charRepo;
+	
+	@GetMapping("/{charId}")
+	public JsonResponse getByChar(@PathVariable Integer charId) {
+		if(charId==null) return JsonResponse.getInstance("ID must be a valid number");
+		try {
+			Optional<Characters> character = charRepo.findById(charId);
+			if(!character.isPresent()) return JsonResponse.getInstance("No such character exists!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+		try {
+			Iterable<CharArmorInventory> armorInv = cArmInvRepo.findByCharacterId(charId);
+			if(armorInv == null) return JsonResponse.getInstance("Character has no armor in Inventory");
+			return JsonResponse.getInstance(armorInv);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+	
+	private JsonResponse save(CharArmorInventory cAI) {
+		try {
+			CharArmorInventory c = cArmInvRepo.saveAndFlush(cAI);
+			return JsonResponse.getInstance(c);
+		} catch (IllegalArgumentException ie) {
+			ie.printStackTrace();
+			return JsonResponse.getInstance(ie);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+	
+	@PostMapping("/")
+	public JsonResponse addArmorInv(@RequestBody CharArmorInventory armorInv) {
+		try {
+			CharArmorInventory c = cArmInvRepo.findByCharacterIdAndArmorId(armorInv.getCharacter().getId(), armorInv.getArmor().getId());
+			if(c!=null) {
+				armorInv.setQuantity(c.getQuantity() + armorInv.getQuantity());
+				return save(armorInv);
+			}
+			return save(armorInv);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+	
+	@PutMapping("/")
+	public JsonResponse update(@RequestBody CharArmorInventory armorInv) {
+		Optional<CharArmorInventory> c = cArmInvRepo.findById(armorInv.getId());
+		if(!c.isPresent()) return JsonResponse.getInstance("Item with that ID does not exist in inventory");
+		return save(armorInv);
+	}
+	
+	@DeleteMapping("/{id}")
+	public JsonResponse deleteArmorInvItem(@PathVariable Integer id) {
+		if(id==null) return JsonResponse.getInstance("Invalid item ID!");
+		try {
+			Optional<CharArmorInventory> armorInv = cArmInvRepo.findById(id);
+			if(!armorInv.isPresent()) return JsonResponse.getInstance("Item with ID " +id+ " cannot be found");
+			cArmInvRepo.deleteById(id);
+			return JsonResponse.getInstance(armorInv.get());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
