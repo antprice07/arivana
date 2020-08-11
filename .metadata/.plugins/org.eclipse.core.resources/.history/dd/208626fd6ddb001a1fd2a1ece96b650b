@@ -70,14 +70,9 @@ public class CharArmInvController {
 	
 	@PutMapping("/")
 	public JsonResponse update(@RequestBody CharArmorInventory armorInv) {
-		try {
-			Optional<CharArmorInventory> c = cArmInvRepo.findById(armorInv.getId());
-			if(!c.isPresent()) return JsonResponse.getInstance("Item with that ID does not exist in inventory");
-			return save(armorInv);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
+		Optional<CharArmorInventory> c = cArmInvRepo.findById(armorInv.getId());
+		if(!c.isPresent()) return JsonResponse.getInstance("Item with that ID does not exist in inventory");
+		return save(armorInv);
 	}
 	
 	@DeleteMapping("/{id}")

@@ -75,8 +75,8 @@ public class CharArmInvController {
 			if(!c.isPresent()) return JsonResponse.getInstance("Item with that ID does not exist in inventory");
 			return save(armorInv);
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return JsonResponse.getInstance(e);
 		}
 	}
 	

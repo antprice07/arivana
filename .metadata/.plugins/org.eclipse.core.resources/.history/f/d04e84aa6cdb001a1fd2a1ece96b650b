@@ -7,6 +7,6 @@ import com.rdsq.arivana.business.CharCombatSkill;
 public interface CharCombatSkillRepository extends JpaRepository<CharCombatSkill, Integer> {
 	
 	Iterable<CharCombatSkill> findByCharId(Integer charId);
-	CharCombatSkill findByCharIdAndCombatSkillId(Integer charId, Integer combatSkillId);
+	CharCombatSkill findByCharacters
 
 }
