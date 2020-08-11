@@ -78,20 +78,6 @@ public class CharMiscItemController {
 			return JsonResponse.getInstance(e);
 		}
 	}
-	
-	@DeleteMapping("/{id}")
-	public JsonResponse deleteMiscInvItem(@PathVariable Integer id) {
-		if(id == null) return JsonResponse.getInstance("Invalid item ID");
-		try {
-			Optional<CharMiscInventory> cmi = invRepo.findById(id);
-			if(!cmi.isPresent()) return JsonResponse.getInstance("Item with ID " +id+ " cannot be found");
-			invRepo.deleteById(id);
-			return JsonResponse.getInstance(cmi.get());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
 
 }
 

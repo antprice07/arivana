@@ -1,0 +1,42 @@
+package com.rdsq.arivana.web;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.business.CharMiscInventory;
+import com.rdsq.arivana.business.Characters;
+import com.rdsq.arivana.db.CharMiscInventoryRepository;
+import com.rdsq.arivana.db.CharactersRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/charmiscinv")
+public class CharMiscItemController {
+	
+	@Autowired
+	private CharMiscInventoryRepository invRepo;
+	@Autowired
+	private CharactersRepository charRepo;
+	
+	@GetMapping("/{charId}")
+	public JsonResponse getByChar(@PathVariable Integer charId) {
+		if(charId==null) return JsonResponse.getInstance("ID must be a valid number");
+		try {
+			Optional<Characters> character = charRepo.findById(charId);
+			if(!character.isPresent()) return JsonResponse.getInstance("No such character exists!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+		try {
+			Iterable<CharMiscInventory> cmi = invRepo.findByCharactersId(charId);
+			if(cmi == null) return JsonResponse.getInstance("Character has no misc inventory items");
+			return JsonResponse.getInstance(cmi);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+
+}

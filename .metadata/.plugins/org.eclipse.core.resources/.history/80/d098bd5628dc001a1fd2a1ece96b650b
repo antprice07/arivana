@@ -54,43 +54,7 @@ public class CharMiscItemController {
 	
 	@PostMapping("/")
 	public JsonResponse addMiscItemInv(@RequestBody CharMiscInventory cmi) {
-		try {
-			CharMiscInventory c = invRepo.findByCharactersIdAndMiscItemId(cmi.getCharacter().getId(), cmi.getMiscItem().getId());
-			if(c!=null) {
-				cmi.setQuantity(c.getQuantity()+cmi.getQuantity());
-				return save(cmi);
-			}
-			return save(cmi);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
-	
-	@PutMapping("/")
-	public JsonResponse update(@RequestBody CharMiscInventory cmi) {
-		try {
-			Optional<CharMiscInventory> c = invRepo.findById(cmi.getId());
-			if(!c.isPresent()) return JsonResponse.getInstance("No such item exists in inventory");
-			return save(cmi);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
-	
-	@DeleteMapping("/{id}")
-	public JsonResponse deleteMiscInvItem(@PathVariable Integer id) {
-		if(id == null) return JsonResponse.getInstance("Invalid item ID");
-		try {
-			Optional<CharMiscInventory> cmi = invRepo.findById(id);
-			if(!cmi.isPresent()) return JsonResponse.getInstance("Item with ID " +id+ " cannot be found");
-			invRepo.deleteById(id);
-			return JsonResponse.getInstance(cmi.get());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
+		CharMiscInventory c = invRepo.findByCharactersIdAndMiscItemId(cmi.getCharacter().getId(), cmi.getMiscItem().getId())
 	}
 
 }
