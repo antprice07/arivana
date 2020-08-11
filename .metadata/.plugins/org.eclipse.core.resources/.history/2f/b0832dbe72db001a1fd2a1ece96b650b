@@ -6,6 +6,6 @@ import com.rdsq.arivana.business.CharArmorInventory;
 
 public interface CharArmorInventoryRepository extends JpaRepository<CharArmorInventory, Integer> {
 	
-	Iterable<CharArmorInventory> findByCharacterId(Integer id);
+	Iterable<CharArmorInventory> findByCharId(Integer id);
 	CharArmorInventory findByCharacterIdAndArmorId(Integer charId, Integer armorId);
 }

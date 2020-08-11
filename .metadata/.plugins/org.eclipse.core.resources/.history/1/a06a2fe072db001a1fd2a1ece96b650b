@@ -30,7 +30,7 @@ public class CharCombatSkillController {
 			return JsonResponse.getInstance(e);
 		}
 		try {
-			Iterable<CharCombatSkill> combatSkills = cCSRepo.findByCharacterId(charId);
+			Iterable<CharCombatSkill> combatSkills = cCSRepo.findByCharId(charId);
 			if(combatSkills==null) return JsonResponse.getInstance("Character has no skills!");
 			return JsonResponse.getInstance(combatSkills);
 		} catch (Exception e) {
@@ -55,7 +55,7 @@ public class CharCombatSkillController {
 	@PostMapping("/")
 	public JsonResponse addCombatSkill(@RequestBody CharCombatSkill combatSkill) {
 		try {
-			CharCombatSkill ccs = cCSRepo.findByCharacterIdAndCombatSkillId(combatSkill.getCharacter().getId(), combatSkill.getCombatSkill().getId());
+			CharCombatSkill ccs = cCSRepo.findByCharIdAndCombatSkillId(combatSkill.getCharacter().getId(), combatSkill.getCombatSkill().getId());
 			if(ccs!=null) return JsonResponse.getInstance("Character already purchased this skill!");
 			return save(combatSkill);
 		} catch (Exception e) {

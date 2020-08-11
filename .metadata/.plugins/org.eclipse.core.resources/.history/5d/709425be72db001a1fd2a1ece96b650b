@@ -30,7 +30,7 @@ public class CharArmInvController {
 			return JsonResponse.getInstance(e);
 		}
 		try {
-			Iterable<CharArmorInventory> armorInv = cArmInvRepo.findByCharacterId(charId);
+			Iterable<CharArmorInventory> armorInv = cArmInvRepo.findByCharId(charId);
 			if(armorInv == null) return JsonResponse.getInstance("Character has no armor in Inventory");
 			return JsonResponse.getInstance(armorInv);
 		} catch (Exception e) {

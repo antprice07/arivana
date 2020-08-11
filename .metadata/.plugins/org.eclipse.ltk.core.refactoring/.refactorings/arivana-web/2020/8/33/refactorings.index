@@ -1,3 +1,7 @@
 1597002680352	Delete element
 1597106834093	Rename method 'findByCharacterId'
 1597106847149	Rename method 'findByCharacterIdAndArmorId'
+1597109622208	Rename method 'findByCharIdAndArmorId'
+1597109645219	Rename method 'findByCharId'
+1597109702309	Rename method 'findByCharId'
+1597109708394	Rename method 'findByCharIdAndCombatSkillId'

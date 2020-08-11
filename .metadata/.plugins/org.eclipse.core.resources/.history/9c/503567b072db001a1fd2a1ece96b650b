@@ -30,7 +30,7 @@ public class CharArmInvController {
 			return JsonResponse.getInstance(e);
 		}
 		try {
-			Iterable<CharArmorInventory> armorInv = cArmInvRepo.findByCharacterId(charId);
+			Iterable<CharArmorInventory> armorInv = cArmInvRepo.findByCharId(charId);
 			if(armorInv == null) return JsonResponse.getInstance("Character has no armor in Inventory");
 			return JsonResponse.getInstance(armorInv);
 		} catch (Exception e) {
@@ -55,7 +55,7 @@ public class CharArmInvController {
 	@PostMapping("/")
 	public JsonResponse addArmorInv(@RequestBody CharArmorInventory armorInv) {
 		try {
-			CharArmorInventory c = cArmInvRepo.findByCharacterIdAndArmorId(armorInv.getCharacter().getId(), armorInv.getArmor().getId());
+			CharArmorInventory c = cArmInvRepo.findByCharIdAndArmorId(armorInv.getCharacter().getId(), armorInv.getArmor().getId());
 			if(c!=null) {
 				//Character already has this armor and they just need to add to their existing quantity
 				armorInv.setQuantity(c.getQuantity() + armorInv.getQuantity());
