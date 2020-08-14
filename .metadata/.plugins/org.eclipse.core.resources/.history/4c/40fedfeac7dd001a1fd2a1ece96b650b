@@ -75,20 +75,6 @@ public class CharCombatSkillController {
 			return JsonResponse.getInstance(e);
 		}
 	}
-	
-	@DeleteMapping("/{id}")
-	public JsonResponse deleteCharCombatSkill(@PathVariable Integer id) {
-		if(id == null) return JsonResponse.getInstance("Invalid skill ID");
-		try {
-			Optional<CharCombatSkill> ccs = cCSRepo.findById(id);
-			if(!ccs.isPresent()) return JsonResponse.getInstance("No skill exists with that ID!");
-			cCSRepo.deleteById(id);
-			return JsonResponse.getInstance(ccs.get());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
 
 }
 

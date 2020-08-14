@@ -1,0 +1,88 @@
+package com.rdsq.arivana.web;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.business.CharSkill;
+import com.rdsq.arivana.business.Characters;
+import com.rdsq.arivana.db.CharSkillRepository;
+import com.rdsq.arivana.db.CharactersRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/charskill")
+public class CharSkillController {
+	
+	@Autowired
+	private CharSkillRepository skillRepo;
+	@Autowired
+	private CharactersRepository charRepo;
+	
+	@GetMapping("/{charId}")
+	public JsonResponse getByChar(@PathVariable Integer charId) {
+		if(charId==null) return JsonResponse.getInstance("ID must be a valid number");
+		try {
+			Optional<Characters> character = charRepo.findById(charId);
+			if(!character.isPresent()) return JsonResponse.getInstance("No such character exists!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+		try {
+			Iterable<CharSkill> charSkills = skillRepo.findByCharactersId(charId);
+			if(charSkills == null) return JsonResponse.getInstance("Character has no skills");
+			return JsonResponse.getInstance(charSkills);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+	
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

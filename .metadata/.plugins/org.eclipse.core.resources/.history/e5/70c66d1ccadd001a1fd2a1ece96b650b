@@ -78,16 +78,7 @@ public class CharSkillController {
 	
 	@DeleteMapping("/{id}")
 	public JsonResponse deleteCharSkill(@PathVariable Integer id) {
-		if(id == null) return JsonResponse.getInstance("Invalid skill ID");
-		try {
-			Optional<CharSkill> cs = skillRepo.findById(id);
-			if(!cs.isPresent()) return JsonResponse.getInstance("No skill exists with that ID");
-			skillRepo.deleteById(id);
-			return JsonResponse.getInstance(cs.get());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
+		
 	}
 
 }

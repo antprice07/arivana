@@ -51,44 +51,6 @@ public class CharSkillController {
 			return JsonResponse.getInstance(e);
 		}
 	}
-	
-	@PostMapping("/")
-	public JsonResponse addCharSkill(@RequestBody CharSkill charSkill) {
-		try {
-			CharSkill cs = skillRepo.findByCharacterIdAndSkillId(charSkill.getCharacter().getId(), charSkill.getSkill().getId());
-			if(cs!=null) return JsonResponse.getInstance("Character already purchased this skill!");
-			return save(charSkill);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
-	
-	@PutMapping("/")
-	public JsonResponse update(@RequestBody CharSkill charSkill) {
-		try {
-			Optional<CharSkill> cs = skillRepo.findById(charSkill.getId());
-			if(!cs.isPresent()) return JsonResponse.getInstance("Skill with that ID does not exist in character skills!");
-			return save(charSkill);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
-	
-	@DeleteMapping("/{id}")
-	public JsonResponse deleteCharSkill(@PathVariable Integer id) {
-		if(id == null) return JsonResponse.getInstance("Invalid skill ID");
-		try {
-			Optional<CharSkill> cs = skillRepo.findById(id);
-			if(!cs.isPresent()) return JsonResponse.getInstance("No skill exists with that ID");
-			skillRepo.deleteById(id);
-			return JsonResponse.getInstance(cs.get());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
 
 }
 
