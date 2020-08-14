@@ -8,4 +8,5 @@ public interface CharWeaponInventoryRepository extends JpaRepository<CharWeaponI
 	
 	Iterable<CharWeaponInventory> findByCharactersId(Integer charId);
 	CharWeaponInventory findByCharactersIdAndWeaponId(Integer charId, Integer weaponId);
+
 }

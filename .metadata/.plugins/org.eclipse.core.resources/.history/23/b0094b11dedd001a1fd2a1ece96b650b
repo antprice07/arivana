@@ -1,0 +1,22 @@
+package com.rdsq.arivana.web;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.db.CharWeaponInventoryRepository;
+import com.rdsq.arivana.db.CharactersRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/charweaponinv")
+public class CharWeaponInventoryController {
+
+	@Autowired
+	private CharWeaponInventoryRepository charWeapon;
+	@Autowired
+	private CharactersRepository charRepo;
+	
+	
+	
+}

@@ -1,0 +1,7 @@
+package com.rdsq.arivana.db;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CombatSkillRepository extends JpaRepository<T, ID> {
+
+}
