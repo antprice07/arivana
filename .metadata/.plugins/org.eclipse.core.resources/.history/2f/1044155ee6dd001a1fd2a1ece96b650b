@@ -1,0 +1,90 @@
+package com.rdsq.arivana.web;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import com.rdsq.arivana.business.CombatSkill;
+import com.rdsq.arivana.db.CombatSkillRepository;
+
+@CrossOrigin
+@RestController
+@RequestMapping("/combatskills")
+public class CombatSkillController {
+	
+	@Autowired
+	private CombatSkillRepository comRepo;
+	
+	@GetMapping("/")
+	public JsonResponse getAll() {
+		try {
+			Iterable<CombatSkill> combatSkills = comRepo.findAll();
+			return JsonResponse.getInstance(combatSkills);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+	
+	@GetMapping("{id}")
+	public JsonResponse getById(@PathVariable Integer id) {
+		if(id==null) return JsonResponse.getInstance("ID must be a valid number");
+		try {
+			Optional<CombatSkill> combatSkill = comRepo.findById(id);
+			if(!combatSkill.isPresent()) return JsonResponse.getInstance("No combat skill found with that ID!");
+			return JsonResponse.getInstance(combatSkill);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

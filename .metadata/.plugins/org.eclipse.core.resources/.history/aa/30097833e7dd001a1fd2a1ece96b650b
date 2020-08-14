@@ -80,7 +80,7 @@ public class ArmorController {
 		if(id==null)return JsonResponse.getInstance("ID field cannot be blank");
 		try {
 			Optional<Armor> armor = armorRepo.findById(id);
-			if(!armor.isPresent()) return JsonResponse.getInstance("No armor with that id can't be found");
+			if(!armor.isPresent()) return JsonResponse.getInstance("No armor with that id can be found");
 			armorRepo.deleteById(id);
 			return JsonResponse.getInstance(armor.get().getName() + "delete.");
 		} catch (Exception e) {

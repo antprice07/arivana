@@ -43,9 +43,6 @@ public class CharWeaponInventoryController {
 		try {
 			CharWeaponInventory cwi = charWeaponRepo.saveAndFlush(charWeapon);
 			return JsonResponse.getInstance(cwi);
-		} catch (IllegalArgumentException ie) {
-			ie.printStackTrace();
-			return JsonResponse.getInstance(ie);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResponse.getInstance(e);
