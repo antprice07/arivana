@@ -78,20 +78,6 @@ public class CharSurvivalInventoryConroller {
 			return JsonResponse.getInstance(e);
 		}
 	}
-	
-	@DeleteMapping("/{id}")
-	public JsonResponse deleteCharSurvItem(@PathVariable Integer id) {
-		if(id==null) return JsonResponse.getInstance("Invalid item ID!");
-		try {
-			Optional<CharSurvivalInventory> csi = itemRepo.findById(id);
-			if(!csi.isPresent()) return JsonResponse.getInstance("No such item can be found");
-			itemRepo.deleteById(id);
-			return JsonResponse.getInstance(csi.get());
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
 
 }
 

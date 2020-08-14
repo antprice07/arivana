@@ -88,8 +88,8 @@ public class CharSurvivalInventoryConroller {
 			itemRepo.deleteById(id);
 			return JsonResponse.getInstance(csi.get());
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return JsonResponse.getInstance(e);
 		}
 	}
 
