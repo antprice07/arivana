@@ -1,0 +1,9 @@
+package com.rdsq.arivana.db;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CharSurvivalInventory extends JpaRepository<CharSurvivalInventory, Integer> {
+	
+	Iterable<CharSurv>
+
+}
